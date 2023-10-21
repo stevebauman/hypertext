@@ -1,0 +1,46 @@
+{
+    "name": "ta-tikoma/phpunit-architecture-test",
+    "description": "Methods for testing application architecture",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "phpunit",
+        "testing",
+        "test",
+        "stucture",
+        "architecture"
+    ],
+    "authors": [
+        {
+            "name": "Ni Shi",
+            "email": "futik0ma011@gmail.com"
+        },
+        {
+            "name": "Nuno Maduro",
+            "email": "enunomaduro@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1.0",
+        "phpunit/phpunit": "^10.1.1",
+        "nikic/php-parser": "^4.15.4",
+        "symfony/finder": "^6.2.7 || ^7.0.0",
+        "phpdocumentor/reflection-docblock": "^5.3.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10.13",
+        "laravel/pint": "^1.9.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "PHPUnit\\Architecture\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
+    }
+}
