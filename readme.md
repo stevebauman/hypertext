@@ -36,10 +36,10 @@ use Stevebauman\Hypertext\Transformer;
 
 $transformer = new Transformer();
 
-// (Optional) Retrieve pure text from the HTML document trimming all spacing.
+// (Optional) Retain new line characters.
 $transformer->keepNewLines();
 
-// (Optional) Retrieve text from the HTML document retaining anchor tags and their href attribute.
+// (Optional) Retain anchor tags and their href attribute.
 $transformer->keepLinks();
 
 $text = $transformer->toText($html);
