@@ -23,6 +23,9 @@ A PHP HTML to pure text transformer that beautifully handles various and malform
 
 ---
 
+
+Hypertext is great for pulling the text content out of any HTML based document, such as emails and web pages. 
+
 ## Installation
 
 ```bash
@@ -43,4 +46,73 @@ $transformer->keepNewLines();
 $transformer->keepLinks();
 
 $text = $transformer->toText($html);
+```
+
+## Example
+
+> For larger examples, please view the [tests/Fixtures](./tests/Fixtures) directory.
+
+**Input**:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+</head>
+<body>
+    <h1>Welcome to My Blog</h1>
+    <p>This is a paragraph of text on my webpage.</p>
+    <a href="https://blog.com/posts">Click here</a> to view my posts.
+</body>
+</html>
+```
+
+**Output (Pure Text)**:
+
+```php
+echo (new Transformer)->toText($input);
+```
+
+```text
+Welcome to My Blog This is a paragraph of text on my webpage. Click here to view my posts.
+```
+
+**Output (Keep New Lines)**:
+
+```php
+echo (new Transformer)->keepNewLines()->toText($input);
+```
+
+```text
+Welcome to My Blog
+This is a paragraph of text on my webpage.
+Click here to view my posts.
+```
+
+**Output (Keep Links)**:
+
+```php
+echo (new Transformer)->keepNewLines()->toText($input);
+```
+
+```text
+Welcome to My Blog This is a paragraph of text on my webpage. <a href="https://blog.com/posts">Click Here</a> to view my posts.
+```
+
+**Output (Keep Both)**:
+
+```php
+echo (new Transformer)
+    ->keepLinks()
+    ->keepNewLines()
+    ->toText($input);
+```
+
+```text
+Welcome to My Blog
+This is a paragraph of text on my webpage.
+<a href="https://blog.com/posts">Click Here</a> to view my posts.
 ```
