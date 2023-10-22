@@ -59,7 +59,7 @@ $text = $transformer->toText($html);
 
 ## Example
 
-> For larger examples, please view the [tests/Fixtures](./tests/Fixtures/) directory.
+> For larger examples, please view the [tests/Fixtures](hypertext/tests/Fixtures) directory.
 
 **Input**:
 
