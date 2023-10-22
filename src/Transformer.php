@@ -77,7 +77,7 @@ class Transformer
     }
 
     /**
-     * Get the HTML to text pipeline.
+     * Get the HTML-to-text pipeline.
      */
     protected function pipeline(): array
     {
