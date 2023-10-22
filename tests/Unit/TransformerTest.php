@@ -58,4 +58,13 @@ it('transforms html to text', function (string $inputFile, string $outputFile, C
         'website/output-both.txt',
         fn (Transformer $transformer) => $transformer->keepLinks()->keepNewLines(),
     ],
+    [
+        'html2text/huge-msoffice/input.txt',
+        'html2text/huge-msoffice/output.txt',
+    ],
+    [
+        'html2text/huge-msoffice/input.txt',
+        'html2text/huge-msoffice/output-lines.txt',
+        fn (Transformer $transformer) => $transformer->keepNewLines(),
+    ],
 ]);

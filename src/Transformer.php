@@ -94,6 +94,9 @@ class Transformer
             // Strip all HTML and CSS.
             fn (string $text) => $this->makePurifier()->purify($text),
 
+            // Strip all remaining HTML tags after purification.
+            fn (string $text) => strip_tags($text, $this->keepLinks ? '<a>' : null),
+
             // Remove all horizontal spaces.
             fn (string $text) => preg_replace( '/\h+/u', ' ', $text),
 
@@ -121,10 +124,12 @@ class Transformer
      */
     protected function makePurifierConfig(): HTMLPurifier_Config
     {
-        $allowed = $this->keepLinks ? 'a[href]' : '';
+        $allowed = array_filter([
+            'p', $this->keepLinks ? 'a[href]' : null,
+        ]);
 
         return HTMLPurifier_Config::create([
-            'HTML.Allowed' => $allowed,
+            'HTML.Allowed' => implode(',', $allowed),
             'Core.Encoding' => 'utf-8',
             'AutoFormat.RemoveEmpty' => true,
             'AutoFormat.AutoParagraph' => true,
