@@ -11,7 +11,15 @@ composer require stevebauman/hypertext
 ## Usage
 
 ```php
-use Stevebauman\Hypertext\Hyper;
+use Stevebauman\Hypertext\Transformer;
 
-$text = Hyper::toText($html);
+$transformer = new Transformer();
+
+// (Optional) Retrieve pure text from the HTML document trimming all spacing.
+$transformer->keepNewLines();
+
+// (Optional) Retrieve text from the HTML document retaining anchor tags and their href attribute.
+$transformer->keepLinks();
+
+$text = $transformer->toText($html);
 ```
