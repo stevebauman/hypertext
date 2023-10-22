@@ -23,8 +23,17 @@ A PHP HTML to pure text transformer that beautifully handles various and malform
 
 ---
 
+Hypertext is excellent at pulling text content out of any HTML based document and automatically:
 
-Hypertext is great for pulling the text content out of any HTML based document, such as emails and web pages. 
+- Removes CSS
+- Removes headers
+- Removes scripts
+- Removes non-HTML based content
+- Preserves spacing 
+- Preserves links (optional)
+- Preserves new lines (optional)
+
+It is directed at using the output in LLM related tasks, such as prompts and embeddings.
 
 ## Installation
 
