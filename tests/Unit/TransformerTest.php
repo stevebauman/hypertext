@@ -7,11 +7,59 @@ function fixture(string $path): string
     return __DIR__ . "/../Fixtures/$path";
 }
 
-it('transforms html to text', function (string $inputFile, string $outputFile, Closure $callback = null) {
+function transformer(): Transformer {
+    return new Transformer();
+}
+
+it('trims unnecessary spacing', function () {
+    expect(
+        transformer()->toText('   foo   bar   ')
+    )->toEqual('foo bar');
+});
+
+it('trims new lines', function () {
+    expect(
+        transformer()->toText("   foo \n  bar   ")
+    )->toEqual('foo bar');
+});
+
+it('captures text', function () {
+    expect(
+        transformer()->toText('foo bar')
+    )->toEqual('foo bar');
+});
+
+it('captures text with new lines when enabled', function () {
+    expect(
+        transformer()->keepNewLines()->toText("foo \n bar")
+    )->toEqual("foo\nbar");
+});
+
+it('captures text within links', function () {
+    expect(
+        transformer()->toText('<a href="localhost">Some Link</a>')
+    )->toEqual("Some Link");
+});
+
+it('captures text with links when enabled', function () {
+    expect(
+        transformer()->keepLinks()->toText('<a href="localhost"> Some Link </a>')
+    )->toEqual('<a href="localhost"> Some Link </a>');
+});
+
+it('adds space around html elements', function () {
+    expect(
+        transformer()->toText(<<<HTML
+        <div>foo</div><a>bar</a><p>baz</p>
+        HTML)
+    )->toEqual('foo bar baz');
+});
+
+it('captures text within html', function (string $inputFile, string $outputFile, Closure $callback = null) {
     $input = file_get_contents(fixture($inputFile));
     $output = file_get_contents(fixture($outputFile));
 
-    $transformer = new Transformer();
+    $transformer = transformer();
 
     if ($callback) {
         $callback($transformer);
@@ -40,22 +88,22 @@ it('transforms html to text', function (string $inputFile, string $outputFile, C
     ],
 
     [
-        'website/input.txt',
-        'website/output.txt',
+        'laravel.com/input.txt',
+        'laravel.com/output.txt',
     ],
     [
-        'website/input.txt',
-        'website/output-links.txt',
+        'laravel.com/input.txt',
+        'laravel.com/output-links.txt',
         fn (Transformer $transformer) => $transformer->keepLinks(),
     ],
     [
-        'website/input.txt',
-        'website/output-lines.txt',
+        'laravel.com/input.txt',
+        'laravel.com/output-lines.txt',
         fn (Transformer $transformer) => $transformer->keepNewLines(),
     ],
     [
-        'website/input.txt',
-        'website/output-both.txt',
+        'laravel.com/input.txt',
+        'laravel.com/output-both.txt',
         fn (Transformer $transformer) => $transformer->keepLinks()->keepNewLines(),
     ],
     [
