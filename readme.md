@@ -104,7 +104,7 @@ Click here to view my posts.
 **Output (Keep Links)**:
 
 ```php
-echo (new Transformer)->keepNewLines()->toText($input);
+echo (new Transformer)->keepLinks()->toText($input);
 ```
 
 ```text
