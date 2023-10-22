@@ -9,7 +9,7 @@ use HTMLPurifier_Config;
 class Transformer
 {
     /**
-     * Whether to keep anchor tags with their links in the output.
+     * Whether to keep anchor tags in the output.
      */
     protected bool $keepLinks = false;
 
@@ -67,7 +67,7 @@ class Transformer
     }
 
     /**
-     * Transform the HTML into pure text.
+     * Transform the HTML into text.
      */
     public function toText(string $html): string
     {
@@ -112,7 +112,7 @@ class Transformer
     }
 
     /**
-     * make a new HTML Purifier instance.
+     * Make a new HTML Purifier instance.
      */
     protected function makePurifier(): HTMLPurifier
     {
