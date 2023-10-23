@@ -91,7 +91,7 @@ class Transformer
             // Remove various forms of unneeded spaces.
             fn (string $text) => str_replace($this->spaces, ' ', $text),
 
-            // Strip all HTML and CSS.
+            // Strip all HTML, CSS, and scripts.
             fn (string $text) => $this->makePurifier()->purify($text),
 
             // Strip all remaining HTML tags after purification.
