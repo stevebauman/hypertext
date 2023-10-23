@@ -26,8 +26,8 @@ A PHP HTML to pure text transformer that beautifully handles various and malform
 Hypertext is excellent at pulling text content out of any HTML based document and automatically:
 
 - Removes CSS
-- Removes headers
 - Removes scripts
+- Removes headers
 - Removes non-HTML based content
 - Preserves spacing 
 - Preserves links (optional)
