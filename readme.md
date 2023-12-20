@@ -82,7 +82,7 @@ $text = $transformer->toText($html);
 **Output (Pure Text)**:
 
 ```php
-echo (new Transformer)->toText($input);
+echo (new Transformer)->toText($html);
 ```
 
 ```text
@@ -92,7 +92,7 @@ Welcome to My Blog This is a paragraph of text on my webpage. Click here to view
 **Output (Keep New Lines)**:
 
 ```php
-echo (new Transformer)->keepNewLines()->toText($input);
+echo (new Transformer)->keepNewLines()->toText($html);
 ```
 
 ```text
@@ -104,7 +104,7 @@ Click here to view my posts.
 **Output (Keep Links)**:
 
 ```php
-echo (new Transformer)->keepLinks()->toText($input);
+echo (new Transformer)->keepLinks()->toText($html);
 ```
 
 ```text
@@ -117,7 +117,7 @@ Welcome to My Blog This is a paragraph of text on my webpage. <a href="https://b
 echo (new Transformer)
     ->keepLinks()
     ->keepNewLines()
-    ->toText($input);
+    ->toText($html);
 ```
 
 ```text
