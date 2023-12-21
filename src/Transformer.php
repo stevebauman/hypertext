@@ -129,6 +129,7 @@ class Transformer
         ]);
 
         return HTMLPurifier_Config::create([
+            'Cache.SerializerPath' => sys_get_temp_dir(),
             'HTML.Allowed' => implode(',', $allowed),
             'Core.Encoding' => 'utf-8',
             'AutoFormat.RemoveEmpty' => true,
