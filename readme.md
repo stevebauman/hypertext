@@ -5,21 +5,11 @@ A PHP HTML to pure text transformer that beautifully handles various and malform
 </p>
 
 <p align="center">
-<a href="https://github.com/stevebauman/hypertext/actions" target="_blank">
-<img src="https://img.shields.io/github/actions/workflow/status/stevebauman/hypertext/run-tests.yml?branch=master&style=flat-square"/>
-</a>
-
-<a href="https://packagist.org/packages/stevebauman/hypertext" target="_blank">
-<img src="https://img.shields.io/packagist/v/stevebauman/hypertext.svg?style=flat-square"/>
-</a>
-
-<a href="https://packagist.org/packages/stevebauman/hypertext" target="_blank">
-<img src="https://img.shields.io/packagist/dt/stevebauman/hypertext.svg?style=flat-square"/>
-</a>
-
-<a href="https://packagist.org/packages/stevebauman/hypertext" target="_blank">
-<img src="https://img.shields.io/packagist/l/stevebauman/hypertext.svg?style=flat-square"/>
-</a>
+<a href="https://github.com/stevebauman/hypertext/actions" target="_blank"><img src="https://img.shields.io/github/actions/workflow/status/stevebauman/hypertext/run-tests.yml?branch=master&style=flat-square"/></a>
+<a href="https://packagist.org/packages/stevebauman/hypertext" target="_blank"><img src="https://img.shields.io/packagist/v/stevebauman/hypertext.svg?style=flat-square"/></a>
+<a href="https://packagist.org/packages/stevebauman/hypertext" target="_blank"><img src="https://img.shields.io/packagist/dt/stevebauman/hypertext.svg?style=flat-square"/></a>
+<a href="https://packagist.org/packages/stevebauman/hypertext" target="_blank"><img src="https://img.shields.io/packagist/l/stevebauman/hypertext.svg?style=flat-square"/></a>
+</p>
 
 ---
 
