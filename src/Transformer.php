@@ -19,6 +19,11 @@ class Transformer
     protected bool $keepNewLines = false;
 
     /**
+     * Filter HTML for specific element(s) using XPath expression
+     */
+    protected ?string $filterXPath = null;
+
+    /**
      * The various unicode spaces to replace with single spaces.
      */
     protected array $spaces = [
@@ -66,6 +71,13 @@ class Transformer
         return $this;
     }
 
+    public function filterXPath($filterXPath): static
+    {
+        $this->filterXPath = $filterXPath;
+
+        return $this;
+    }
+
     /**
      * Transform the HTML into text.
      */
@@ -82,6 +94,31 @@ class Transformer
     protected function pipeline(): array
     {
         return array_merge([
+            function (string $text) {
+                if (! $this->filterXPath) {
+                    return $text;
+                }
+
+                libxml_use_internal_errors(true);
+
+                $domDocument = new \DOMDocument();
+                $domDocument->loadHTML($text);
+
+                libxml_use_internal_errors(false);
+
+                $domXPath = new \DOMXPath($domDocument);
+                $elements = $domXPath->query($this->filterXPath);
+
+                $result = '';
+
+                /** @var \DOMElement $ad */
+                foreach($elements as $element) {
+                    $result .= $element->ownerDocument->saveXML($element);
+                }
+
+                return $result;
+            },
+
             // Convert any quoted-printable strings to an 8 bit string.
             fn (string $text) => quoted_printable_decode($text),
 

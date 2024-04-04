@@ -116,3 +116,18 @@ it('captures text within html', function (string $inputFile, string $outputFile,
         fn (Transformer $transformer) => $transformer->keepNewLines(),
     ],
 ]);
+
+it('it captures text only within selector', function () {
+    expect(
+        transformer()->filterXPath('//a')->toText(<<<HTML
+        <div>foo</div><a>bar</a><p>baz</p>
+        HTML)
+    )->toEqual('bar');
+});
+
+it('it captures text only within selector with larger input', function () {
+    $input = file_get_contents(fixture('laravel.com/input.txt'));
+    $output = file_get_contents(fixture('laravel.com/output-filter-xpath.txt'));
+
+    expect(transformer()->filterXPath('//footer')->keepLinks()->keepNewLines()->toText($input))->toEqual($output);
+});
