@@ -38,6 +38,9 @@ use Stevebauman\Hypertext\Transformer;
 
 $transformer = new Transformer();
 
+// (Optional) Filter out specific elements by their XPath.
+$transformer->filter("//*[@id='some-element']");
+
 // (Optional) Retain new line characters.
 $transformer->keepNewLines();
 
