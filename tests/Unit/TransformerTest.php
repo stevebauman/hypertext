@@ -131,3 +131,11 @@ it('it captures text only within filter selector with larger input', function ()
 
     expect(transformer()->filter('//footer')->keepLinks()->keepNewLines()->toText($input))->toEqual($output);
 });
+
+it('converts html entities into their true form', function () {
+    expect(
+        transformer()->toText(<<<HTML
+            <p>Here's some &nbsp;text that is a bit &ldquo;rough &amp; ready&rdquo;</p>
+        HTML)
+    )->toEqual("Here's some text that is a bit “rough & ready”");
+});
