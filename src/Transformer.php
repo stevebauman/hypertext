@@ -124,6 +124,9 @@ class Transformer
                 // Remove all excess spacing around new lines.
                 fn (string $html) => preg_replace('/\s*\n\s*/', "\n", $html),
 
+                // Decode all remaining HTML entities.
+                fn (string $html) => html_entity_decode($html, ENT_QUOTES, 'UTF-8'),
+
                 // Finally, trim the end result.
                 fn (string $html) => trim($html),
             ],
