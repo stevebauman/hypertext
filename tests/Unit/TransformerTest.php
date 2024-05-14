@@ -86,7 +86,6 @@ it('captures text within html', function (string $inputFile, string $outputFile,
         'email/output-both.txt',
         fn (Transformer $transformer) => $transformer->keepLinks()->keepNewLines(),
     ],
-
     [
         'laravel.com/input.txt',
         'laravel.com/output.txt',

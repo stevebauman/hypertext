@@ -119,7 +119,7 @@ class Transformer
                 fn (string $html) => strip_tags($html, $this->keepLinks ? '<a>' : null),
 
                 // Remove all horizontal spaces.
-                fn (string $html) => preg_replace( '/\h+/u', ' ', $html),
+                fn (string $html) => preg_replace('/\h+/u', ' ', $html),
 
                 // Remove all excess spacing around new lines.
                 fn (string $html) => preg_replace('/\s*\n\s*/', "\n", $html),
