@@ -125,7 +125,7 @@ class Transformer
                 fn (string $html) => preg_replace('/\s*\n\s*/', "\n", $html),
 
                 // Decode any remaining HTML entities.
-                fn (string $html) => htmlspecialchars_decode($html),
+                 fn (string $html) => htmlspecialchars_decode($html),
 
                 // Finally, trim the end result.
                 fn (string $html) => trim($html),
