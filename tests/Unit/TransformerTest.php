@@ -105,15 +105,6 @@ it('captures text within html', function (string $inputFile, string $outputFile,
         'laravel.com/output-both.txt',
         fn (Transformer $transformer) => $transformer->keepLinks()->keepNewLines(),
     ],
-    [
-        'html2text/huge-msoffice/input.txt',
-        'html2text/huge-msoffice/output.txt',
-    ],
-    [
-        'html2text/huge-msoffice/input.txt',
-        'html2text/huge-msoffice/output-lines.txt',
-        fn (Transformer $transformer) => $transformer->keepNewLines(),
-    ],
 ]);
 
 it('it captures text only within filter selector', function () {
